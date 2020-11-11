@@ -48,6 +48,23 @@ class BusinessController extends Controller
             $queryBuilder = Category::where('name', request()->category)->first()->businesses();
         }
 
+        if (request()->search){
+            $search_query = request()->search;
+            $queryBuilder = (isset($queryBuilder))? 
+            
+            $queryBuilder
+                ->where('name','LIKE',"%{$search_query}%")
+                ->orWhere('country','LIKE',"%{$search_query}%")
+                ->orWhere('city','LIKE',"%{$search_query}%")
+                ->orWhere('slug','LIKE',"%{$search_query}%")
+                ->orWhere('description','LIKE',"%{$search_query}%"): 
+            Business::
+            where('name','LIKE',"%{$search_query}%")
+            ->orWhere('country','LIKE',"%{$search_query}%")
+            ->orWhere('city','LIKE',"%{$search_query}%")
+            ->orWhere('slug','LIKE',"%{$search_query}%")
+            ->orWhere('description','LIKE',"%{$search_query}%");
+        }
         if (request()->rated) {
             $queryBuilder =  (isset($queryBuilder)) ? $queryBuilder->where('average_review', '=', request()->rated) : Business::where('average_review', '=', request()->rated);
         }

@@ -1,15 +1,26 @@
 /node_modules
+/public/css
 /public/hot
+/public/js
 /public/storage
 /storage/*.key
 /vendor
 .DS_Store
 .env
 .env.backup
-.idea
 .phpunit.result.cache
+
+# Editor-specific config files
+.idea
 .vscode
+
+# Laravel Homestead files for local dev
+.vagrant
+after.sh
+aliases
 Homestead.json
 Homestead.yaml
+Vagrantfile
+
 npm-debug.log
 yarn-error.log
